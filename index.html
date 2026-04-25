@@ -3,577 +3,517 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Resep Asli - RSUD H. ABDUL MANAP</title>
-    <style>
-        @page {
-            size: A5 landscape;
-            margin: 0.3cm;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            font-size: 7.5pt;
-            margin: 0;
-            padding: 0;
-            color: #000;
-            line-height: 1.15;
-        }
-
-        .container {
-            width: 100%;
-            padding: 4px;
-        }
-
-        /* Header Rumah Sakit */
-        .header {
-            display: flex;
-            align-items: center;
-            border-bottom: 2px solid #000;
-            padding-bottom: 3px;
-            margin-bottom: 6px;
-        }
-
-        .logo {
-            width: 40px;
-            height: 50px;
-            margin-right: 8px;
-        }
-
-        .hospital-info b {
-            font-size: 9pt;
-            display: block;
-            line-height: 1.2;
-        }
-
-        .hospital-info span {
-            font-size: 6.5pt;
-            line-height: 1.2;
-        }
-
-        /* Layout Utama */
-        .main-layout {
-            display: flex;
-            gap: 12px;
-        }
-
-        .left-panel {
-            width: 50%;
-            border-right: 1px dashed #999;
-            padding-right: 8px;
-        }
-
-        .right-panel {
-            width: 50%;
-        }
-
-        /* Informasi Pasien */
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .info-table td {
-            font-size: 7.5pt;
-            padding: 1px 2px;
-            vertical-align: top;
-            line-height: 1.3;
-        }
-
-        .info-table td:first-child {
-            white-space: nowrap;
-            width: 28%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-bottom: 4px;
-            font-size: 8.5pt;
-        }
-
-        /* Area Resep (R/) */
-        .prescription-area {
-            margin-top: 4px;
-            min-height: 120px;
-            border-top: 1px solid #000;
-            padding-top: 4px;
-        }
-
-        .r-item {
-            margin-bottom: 6px;
-        }
-
-        .r-item b {
-            font-size: 8pt;
-        }
-
-        .r-item .drug-detail {
-            font-size: 7pt;
-            line-height: 1.3;
-            margin-left: 15px;
-        }
-
-        .r-item .drug-detail i {
-            display: block;
-            margin-top: 2px;
-            margin-left: 10px;
-        }
-
-        /* Checklist & Tabel Verifikasi */
-        .checklist-container {
-            border: 1px solid #000;
-            padding: 3px;
-        }
-
-        .checklist-section {
-            margin-bottom: 3px;
-        }
-
-        .checklist-table {
-            width: 100%;
-            font-size: 6.5pt;
-            border-collapse: collapse;
-        }
-
-        .checklist-table th,
-        .checklist-table td {
-            border: 1px solid #000;
-            padding: 1px 2px;
-            line-height: 1.2;
-        }
-
-        .checklist-table th {
-            background: #f0f0f0;
-            text-align: center;
-            font-weight: bold;
-            font-size: 6.5pt;
-        }
-
-        .checklist-table td:first-child {
-            text-align: center;
-            width: 18px;
-        }
-
-        .checklist-table td:nth-child(2) {
-            padding-left: 4px;
-        }
-
-        .checklist-table td:nth-child(3),
-        .checklist-table td:nth-child(4) {
-            text-align: center;
-            width: 14px;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .footer-tables {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3px;
-            margin: 3px 0;
-        }
-
-        .box-title {
-            background: #e8e8e8;
-            font-weight: bold;
-            text-align: center;
-            border: 1px solid #000;
-            font-size: 6pt;
-            padding: 2px;
-        }
-
-        .sign-box {
-            border: 1px solid #000;
-            height: 32px;
-            font-size: 6pt;
-            padding: 2px 3px;
-            line-height: 1.3;
-        }
-
-        /* Tabel Footer Kiri */
-        .process-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 6.5pt;
-            margin-top: 3px;
-        }
-
-        .process-table td {
-            border: 0.5px solid #ccc;
-            height: 28px;
-            vertical-align: top;
-            padding: 2px;
-        }
-
-        .note-text {
-            font-style: italic;
-            font-size: 6.5pt;
-            margin: 3px 0;
-            line-height: 1.2;
-        }
-
-        /* Tanda Tangan */
-        .signature-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 3px;
-        }
-
-        .signature-table td {
-            border: 1px solid #000;
-            height: 32px;
-            vertical-align: top;
-            padding: 2px;
-            font-size: 6.5pt;
-            text-align: center;
-        }
-
-        /* Print Info */
-        .print-info {
-            text-align: center;
-            font-size: 6.5pt;
-            margin-top: 4px;
-            color: #666;
-        }
-
-        /* Button Styling */
-        .no-print {
-            display: block;
-        }
-
-        .print-btn {
-            display: block;
-            width: 100%;
-            margin-top: 15px;
-            padding: 12px;
-            cursor: pointer;
-            background: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 11pt;
-            transition: background 0.2s;
-        }
-
-        .print-btn:hover {
-            background: #218838;
-        }
-
-        @media print {
-            .no-print {
-                display: none;
-            }
-
-            body {
-                font-size: 7pt;
-            }
-        }
-    </style>
+    <title>Resep Asli #175991 - RSUD H. ABDUL MANAP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
-        <!-- Kop Surat -->
-        <div class="header">
-            <img src="http://192.168.8.4/assets/images/logo/Kota%20Jambi.png" class="logo" alt="Logo">
+    <div class="page">
+
+        <header class="header">
+            <img src="http://103.147.236.140/assets/images/logo/Kota%20Jambi.png" class="logo" alt="Logo Kota Jambi"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="logo-placeholder" style="display:none;">Logo</div>
             <div class="hospital-info">
-                <b>RSUD H. ABDUL MANAP KOTA JAMBI</b>
-                <span>Jl. Sk. Rd. Syahbudin, Mayang Mangurai, Alam Barajo, Kota Jambi<br>
-                    Telp: (0741) 5910190 | Email: rsudjambikota@gmail.com</span>
+                <span class="name">RSUD H. ABDUL MANAP KOTA JAMBI</span>
+                <span class="address">
+                    Jl. Sk. Rd. Syahbudin, Mayang Mangurai, Alam Barajo, Kota Jambi<br>
+                    Telp: (0741) 5910190 | Email: rsudjambikota@gmail.com
+                </span>
             </div>
-        </div>
+        </header>
 
-        <div class="main-layout">
-            <!-- SISI KIRI: DATA RESEP ASLI -->
-            <div class="left-panel">
-                <div class="section-title">RESEP ASLI</div>
+        <hr>
+        <h4 style="font-weight: bold; text-align: center; padding: 10px; text-decoration: underline;">RESEP ASLI</h4>
 
+        <div class="main-grid">
+
+            <section class="cell cell-info-pasien">
                 <table class="info-table">
-                    <tr>
-                        <td>No. Resep</td>
-                        <td>: <b>R260425-1</b></td>
-                    </tr>
-                    <tr>
-                        <td>Tgl / Jam</td>
-                        <td>: 25/04/2026 / 00:42:57</td>
-                    </tr>
-                    <tr>
-                        <td>Pasien</td>
-                        <td>: <b>SARIYANI</b> (P) / 00006547</td>
-                    </tr>
-                    <tr>
-                        <td>Dokter</td>
-                        <td>: dr. Freddy Hasudungan Aritonang, MSc., Sp. S</td>
-                    </tr>
-                    <tr>
-                        <td>Unit Asal</td>
-                        <td>: IGD / RAWAT INAP PENYAKIT DALAM</td>
-                    </tr>
-                    <tr>
-                        <td>Alergi</td>
-                        <td>: [ ] Tidak &nbsp; [ ] Ya: .........................</td>
-                    </tr>
+                    <colgroup>
+                        <col class="lbl">
+                        <col class="sep">
+                        <col class="val">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="lbl">No. RM</td>
+                            <td class="sep">:</td>
+                            <td class="val">00006547</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">No. SEP</td>
+                            <td class="sep">:</td>
+                            <td class="val">-</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">No. Kartu</td>
+                            <td class="sep">:</td>
+                            <td class="val">0003176445677</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">No. Telpon</td>
+                            <td class="sep">:</td>
+                            <td class="val">08889993335</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Unit Asal</td>
+                            <td class="sep">:</td>
+                            <td class="val">RAWAT INAP PENYAKIT DALAM & SARAF</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Nama Pasien</td>
+                            <td class="sep">:</td>
+                            <td class="val"><strong>SARIYANI</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Tanggal Lahir</td>
+                            <td class="sep">:</td>
+                            <td class="val">06/06/1972</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Berat Badan</td>
+                            <td class="sep">:</td>
+                            <td class="val">60 Kg</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Penjamin</td>
+                            <td class="sep">:</td>
+                            <td class="val">UMUM</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Diagnosa</td>
+                            <td class="sep">:</td>
+                            <td class="val">Hypoglycaemia, unspecified</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Riwayat Alergi</td>
+                            <td class="sep">:</td>
+                            <td class="val">-</td>
+                        </tr>
+                    </tbody>
                 </table>
+            </section>
 
+            <section class="cell cell-info-dokter">
+                <table class="info-table">
+                    <colgroup>
+                        <col class="lbl">
+                        <col class="sep">
+                        <col class="val">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td class="lbl">No. Resep</td>
+                            <td class="sep">:</td>
+                            <td class="val">R250426-3</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Dokter</td>
+                            <td class="sep">:</td>
+                            <td class="val">dr. Freddy Hasudungan Aritonang, MSc., Sp. S</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">SIP</td>
+                            <td class="sep">:</td>
+                            <td class="val" style="text-transform: uppercase;">Mr15712501006911</td>
+                        </tr>
+
+                        <tr>
+                            <td class="lbl">Ruangan/Poli</td>
+                            <td class="sep">:</td>
+                            <td class="val">IGD</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Tanggal</td>
+                            <td class="sep">:</td>
+                            <td class="val">25/04/2026</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Jam</td>
+                            <td class="sep">:</td>
+                            <td class="val">00:42:57</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">Iter</td>
+                            <td class="sep">:</td>
+                            <td class="val"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="cell cell-daftar">
                 <div class="prescription-area">
-                    <!-- R/1: Racikan -->
-                    <div class="r-item">
-                        <b>R/ 1</b>
-                        <div class="drug-detail">
-                            Parasetamol Kaplet 500 mg (375 mg)<br>
-                            DIAZEPAM TABLET 2 MG (1/1)<br>
-                            Codein Tablet 15 Mg (1/3 Tablet)<br>
-                            m.f. pulv. dtd. No. X <span style="float:right"><b>Jml: 10 (Racikan)</b></span><br>
-                            <i>S. 3 dd pulv I (3x1)</i>
-                        </div>
-                    </div>
+                    <table class="resep-table">
+                        <colgroup>
+                            <col class="col-r">
+                            <col class="col-nama">
+                            <col class="col-aturan">
+                            <col class="col-jml">
+                        </colgroup>
+                        <tbody>
+                            <!-- CONTOH 1: Kasus Infeksi Saluran Pernapasan (Anak) -->
+                            <tr>
+                                <td class="col-r">R/1</td>
+                                <td class="col-nama">
+                                    Amoxicillin 125 mg<br>
+                                    Parasetamol 100 mg<br>
+                                    GG (Glyceryl Guaiacolate) 50 mg<br>
+                                    m.f. pulv. dtd. No. XV
+                                </td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 15 (Racikan)</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 3 dd pulv I</i></td>
+                            </tr>
 
-                    <!-- R/2: Injeksi -->
-                    <div class="r-item">
-                        <b>R/ 2</b>
-                        <div class="drug-detail">
-                            Ketorolac Trometamol Injeksi 30 mg/ml (1/1) <span style="float:right">Jml: 1</span><br>
-                            <i>S. pro inj. (u.c)</i>
-                        </div>
-                    </div>
+                            <tr>
+                                <td class="col-r">R/2</td>
+                                <td class="col-nama">Ceterizine Syrup 60 ml</td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 1 btl</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 1 dd cth I (malam)</i></td>
+                            </tr>
+
+                            <!-- CONTOH 2: Kasus Hipertensi & Kolesterol (Dewasa/Geriatri) -->
+                            <tr>
+                                <td class="col-r">R/3</td>
+                                <td class="col-nama">Amlodipine 5 mg</td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 30</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 1 dd tab I (pagi)</i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-r">R/4</td>
+                                <td class="col-nama">Simvastatin 20 mg</td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 30</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 1 dd tab I (malam)</i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-r">R/5</td>
+                                <td class="col-nama">Candesartan 8 mg</td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 30</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 1 dd tab I</i></td>
+                            </tr>
+
+                            <!-- CONTOH 3: Kasus Penyakit Kulit (Salep Campuran) -->
+                            <tr>
+                                <td class="col-r">R/6</td>
+                                <td class="col-nama">
+                                    Desoximetasone Cream 5 gr<br>
+                                    Gentamicin Ointment 5 gr<br>
+                                    m.f. la. ungt. (campur jadi salep)
+                                </td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 1 Pot</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 2 dd u.e (oles tipis)</i></td>
+                            </tr>
+
+                            <!-- CONTOH 4: Kasus Nyeri Lambung & Vitamin -->
+                            <tr>
+                                <td class="col-r">R/7</td>
+                                <td class="col-nama">Omeprazole 20 mg Kaplet</td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 10</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 2 dd cap I (ac)</i></td>
+                            </tr>
+
+                            <tr>
+                                <td class="col-r">R/8</td>
+                                <td class="col-nama">
+                                    Vitamin B6 10 mg<br>
+                                    Vitamin B12 50 mcg
+                                </td>
+                                <td class="col-aturan"></td>
+                                <td class="col-jml">Jml: 10 (Racikan)</td>
+                            </tr>
+                            <tr class="row-signatura">
+                                <td></td>
+                                <td colspan="3"><i>S. 1 dd cap I</i></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </section>
 
-                <table class="process-table">
-                    <tr class="text-center">
-                        <td width="25%">Hitung</td>
-                        <td width="25%">Timbang</td>
-                        <td width="25%">Kemas</td>
-                        <td width="25%">Penyerahan</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </table>
-
-                <p class="note-text">* Obat tidak boleh diganti tanpa sepengetahuan Dokter.</p>
-            </div>
-
-            <!-- SISI KANAN: TELAAH & VERIFIKASI (GABUNGAN LENGKAP) -->
-            <div class="right-panel">
+            <section class="cell cell-telaah-detail">
                 <div class="checklist-container">
-                    <!-- Tabel Telaah Resep -->
+
                     <div class="checklist-section">
                         <table class="checklist-table">
-                            <tr>
-                                <th colspan="4">TELAAH RESEP (1-10)</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Kejelasan tulisan resep</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Benar identitas pasien</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Benar nama dokter & tanda tangan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Benar dosis obat</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Benar frekuensi pemberian</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
-                        <table class="checklist-table" style="margin-top: 1px;">
-                            <tr>
-                                <td>6</td>
-                                <td>Benar rute pemberian</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Kesesuaian aturan pakai</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Tidak ada interaksi obat</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Tidak ada duplikasi obat</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Tidak ada kontraindikasi</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <colgroup>
+                                <col class="c-no">
+                                <col class="c-lbl">
+                                <col class="c-y">
+                                <col class="c-t">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th colspan="4">TELAAH RESEP (1-10)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="c-no">1</td>
+                                    <td class="c-lbl">Kejelasan tulisan resep</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">2</td>
+                                    <td class="c-lbl">Benar identitas pasien</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">3</td>
+                                    <td class="c-lbl">Benar nama dokter &amp; tanda tangan</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">4</td>
+                                    <td class="c-lbl">Benar dosis obat</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">5</td>
+                                    <td class="c-lbl">Benar frekuensi pemberian</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">6</td>
+                                    <td class="c-lbl">Benar rute pemberian</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">7</td>
+                                    <td class="c-lbl">Kesesuaian aturan pakai</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">8</td>
+                                    <td class="c-lbl">Tidak ada interaksi obat</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">9</td>
+                                    <td class="c-lbl">Tidak ada duplikasi obat</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">10</td>
+                                    <td class="c-lbl">Tidak ada kontraindikasi</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
 
-                    <!-- Tabel Telaah Obat -->
                     <div class="checklist-section">
                         <table class="checklist-table">
-                            <tr>
-                                <th colspan="4">TELAAH OBAT (1-6)</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Benar identitas obat</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Ketepatan jenis obat</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Ketepatan kekuatan/dosis</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Ketepatan bentuk sediaan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Ketepatan jumlah obat</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Kesesuaian dengan formularium</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <colgroup>
+                                <col class="c-no">
+                                <col class="c-lbl">
+                                <col class="c-y">
+                                <col class="c-t">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th colspan="4">TELAAH OBAT (1-6)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="c-no">1</td>
+                                    <td class="c-lbl">Benar identitas obat</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">2</td>
+                                    <td class="c-lbl">Ketepatan jenis obat</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">3</td>
+                                    <td class="c-lbl">Ketepatan kekuatan/dosis</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">4</td>
+                                    <td class="c-lbl">Ketepatan bentuk sediaan</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">5</td>
+                                    <td class="c-lbl">Ketepatan jumlah obat</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">6</td>
+                                    <td class="c-lbl">Kesesuaian dengan formularium</td>
+                                    <td class="c-y"></td>
+                                    <td class="c-t"></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
 
-                    <!-- Persetujuan Perubahan & Waktu Tunggu -->
-                    <div class="footer-tables">
+                    <div class="checklist-section">
                         <div>
                             <div class="box-title">PERSETUJUAN PERUBAHAN</div>
                             <div class="sign-box">
-                                Tulis: ....................................<br>
-                                Jadi : ....................................
-                                <div style="display:flex; justify-content:space-between; margin-top:2px;">
-                                    <span>Apt. [___]</span><span>Dr. [___]</span>
+                                Tertulis : ..............................<br>
+                                Menjadi : ..............................
+                                <div class="split">
+                                    <span>Apt. [___]</span>
+                                    <span>Dr. [___]</span>
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="checklist-section">
                         <div>
                             <div class="box-title">WAKTU TUNGGU</div>
                             <div class="sign-box">
-                                Masuk: .............................<br>
-                                Selesai: ............................
+                                Masuk : ......................<br>
+                                Diserahkan: ......................
                             </div>
                         </div>
                     </div>
 
-                    <!-- Tabel Edukasi Obat -->
                     <div class="checklist-section">
                         <table class="checklist-table">
-                            <tr>
-                                <th colspan="3">EDUKASI OBAT (1-7)</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Nama obat</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Kegunaan (manfaat) obat</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Aturan pakai obat</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Rute pemberian</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Cara penyimpanan</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Efek samping</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Riwayat alergi</td>
-                                <td></td>
-                            </tr>
+                            <colgroup>
+                                <col class="c-no">
+                                <col class="c-lbl">
+                                <col class="c-y">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th colspan="3">EDUKASI OBAT (1-7)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="c-no">1</td>
+                                    <td class="c-lbl">Nama Obat</td>
+                                    <td class="c-y"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">2</td>
+                                    <td class="c-lbl">Kegunaan Obat</td>
+                                    <td class="c-y"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">3</td>
+                                    <td class="c-lbl">Dosis & Sediaan Obat</td>
+                                    <td class="c-y"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">4</td>
+                                    <td class="c-lbl">Rute & cara pakai</td>
+                                    <td class="c-y"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">5</td>
+                                    <td class="c-lbl">Cara penyimpanan</td>
+                                    <td class="c-y"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">6</td>
+                                    <td class="c-lbl">Efek samping</td>
+                                    <td class="c-y"></td>
+                                </tr>
+                                <tr>
+                                    <td class="c-no">7</td>
+                                    <td class="c-lbl">Alergi obat</td>
+                                    <td class="c-y"></td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
 
-                    <!-- Paraf Tanda Tangan -->
                     <table class="signature-table">
                         <tr>
-                            <td width="50%">
-                                Paraf & Nama<br>Pasien/Keluarga<br><br>
+                            <td style="width:50%">
+                                Paraf & Nama<br>Pasien/Keluarga
                             </td>
-                            <td width="50%">
-                                Petugas Farmasi<br>(Pcc)<br><br>
+                            <td style="width:50%">
+                                Petugas Farmasi<br>(Pcc)
                             </td>
                         </tr>
                     </table>
                 </div>
+            </section>
 
-                <div class="print-info">
-                    Cetak: 25/04/2026 15:39 | User: DEPO RANAP
-                </div>
-            </div>
-        </div>
+            <section class="cell cell-proses">
+                <table class="process-table">
+                    <tbody>
+                        <tr class="label-row">
+                            <td>Hitung</td>
+                            <td>Timbang</td>
+                            <td>Kemas</td>
+                            <td>Penyerahan</td>
+                        </tr>
+                        <tr class="empty-row">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-        <!-- Tombol Kontrol -->
-        <div class="no-print">
-            <button class="print-btn" onclick="window.print()">
-                CETAK RESEP ASLI
-            </button>
         </div>
+    </div>
+    <p class="note-text" style="place-self: anchor-center;">* Obat tidak boleh diganti tanpa
+        sepengetahuan Dokter.</p>
+
+    <div class="no-print">
+        <button class="print-btn" onclick="window.print()">CETAK RESEP ASLI</button>
     </div>
 
 </body>

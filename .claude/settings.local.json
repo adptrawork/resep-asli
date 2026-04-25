@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "PowerShell(python3 \"C:\\\\Users\\\\adptra01\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"healthcare prescription medical form clean professional\" --design-system -p \"Resep Medis\" -f markdown)"
+    ]
+  }
+}
