@@ -1,3 +1,29 @@
+ /* ═══════════════════════════════════════════════════════════════
+           HYBRID PRINT APPROACH
+           ═══════════════════════════════════════════════════════════════
+
+   Pendekatan Kombinasi untuk Kertas 1/4 F4 (165mm × 107.5mm):
+
+   1. FLUID STRUCTURE (Persentase):
+      - Semua lebar kolom menggunakan % untuk fleksibilitas
+      - Label info-table: 38%, Separator: 5%
+      - Checklist Y/T: 10% masing-masing
+      - Resep table: R/ 14%, Aturan 12%, Jml 18%
+
+   2. SCALE FINE-TUNING:
+      - Base width: 210mm (A5 landscape)
+      - Transform scale: 0.88 (hanya fine-tuning)
+      - Scale lebih besar karena struktur sudah fluid
+
+   3. SPACING OPTIMISASI:
+      - Padding sangat minimal: 0-2px
+      - Line-height dikurangi: 1.2-1.25
+      - Font size: 6-7pt untuk tabel
+
+   Hasil: Layout fleksibel + teks tajam + scale minimal
+
+ ═══════════════════════════════════════════════════════════════ */
+
  /* ── Page Setup ── */
  @page {
      /* Ukuran 1/4 F4 Landscape (165mm × 107.5mm) */
@@ -64,6 +90,7 @@
 
  .hospital-info {
      flex: 1;
+     text-align: center;
  }
 
  .hospital-info .name {
@@ -139,12 +166,12 @@
  /* label: fixed narrow width, no wrap */
  .info-table .lbl {
      white-space: nowrap;
-     width: 90px;
+     width: 38%; /* Persentase untuk fleksibilitas layout */
  }
 
  /* colon column */
  .info-table .sep {
-     width: 10px;
+     width: 5%; /* Persentase untuk fleksibilitas layout */
      text-align: center;
  }
 
@@ -196,7 +223,7 @@
  }
 
  .resep-table col.col-r {
-     width: 40px;
+     width: 12%; /* Persentase untuk fleksibilitas */
  }
 
  .resep-table col.col-nama {
@@ -204,11 +231,11 @@
  }
 
  .resep-table col.col-aturan {
-     width: 45px;
+     width: 15%; /* Persentase untuk fleksibilitas */
  }
 
  .resep-table col.col-jml {
-     width: 80px;
+     width: 20%; /* Persentase untuk fleksibilitas */
  }
 
  .resep-table td {
@@ -322,7 +349,7 @@
 
  /* col widths: no. | label | Y | T */
  .checklist-table col.c-no {
-     width: 14px;
+     width: 8%; /* Persentase untuk fleksibilitas */
  }
 
  .checklist-table col.c-lbl {
@@ -330,11 +357,11 @@
  }
 
  .checklist-table col.c-y {
-     width: 14px;
+     width: 8%; /* Persentase untuk fleksibilitas */
  }
 
  .checklist-table col.c-t {
-     width: 14px;
+     width: 8%; /* Persentase untuk fleksibilitas */
  }
 
  .checklist-table td.c-no,
@@ -443,12 +470,17 @@
          display: none;
      }
 
-     /* Strategi Pengecilan Dinamis dengan Transform Scale */
+     /* ========================================
+        HYBRID APPROACH:
+        1. Structure already fluid (persentase)
+        2. Scale hanya untuk fine-tuning terakhir
+        ======================================== */
+
      .page {
-         /* Memaksa kontainer berpura-pura memiliki lebar kertas yang lebih besar (A5) */
+         /* Base lebar A5 landscape */
          width: 210mm !important;
-         /* Lalu mengecilkannya 75% agar muat di kertas 1/4 F4 */
-         transform: scale(0.75);
+         /* Fine-tuning scale: lebih besar karena struktur sudah fluid */
+         transform: scale(0.88);
          transform-origin: top left;
          border: none;
      }
@@ -457,13 +489,68 @@
          font-size: 7pt;
      }
 
-     /* Pertahankan tinggi signature-table untuk ruang TTD saat cetak */
-     .signature-table td {
-         height: 50px !important;
-         padding: 4px 5px !important;
+     /* ========================================
+        OPTIMISI SPACING - Hemat setiap milimeter
+        ======================================== */
+
+     /* Cell padding sangat minimal untuk kertas kecil */
+     .cell {
+         padding: 2px 3px !important;
      }
 
-     /* Pertahankan rasio kolom signature saat cetak */
+     /* Info table sangat rapat */
+     .info-table td {
+         padding: 0px 1px !important;
+         line-height: 1.25 !important;
+     }
+
+     /* Checklist table sangat rapat */
+     .checklist-table th,
+     .checklist-table td {
+         padding: 0px 1px !important;
+         line-height: 1.2 !important;
+     }
+
+     /* Kolom Y/T checklist pastikan cukup lebar */
+     .checklist-table col.c-no,
+     .checklist-table col.c-y,
+     .checklist-table col.c-t {
+         width: 10% !important;
+     }
+
+     /* Resep table */
+     .resep-table td {
+         padding: 1px 2px !important;
+     }
+
+     /* Sign box */
+     .sign-box {
+         padding: 1px 2px !important;
+     }
+
+     /* Box title font size lebih kecil */
+     .box-title {
+         font-size: 5.5pt !important;
+         padding: 1px 2px !important;
+     }
+
+     /* Note text lebih kecil */
+     .note-text {
+         font-size: 6pt !important;
+         margin-top: 2px !important;
+     }
+
+     /* ========================================
+        SIGNATURE & PROCESS TABLE - Alignment
+        ======================================== */
+
+     /* Signature: Tinggi cukup untuk TTD, padding minimal */
+     .signature-table td {
+         height: 48px !important;
+         padding: 3px 4px !important;
+     }
+
+     /* Rasio kolom signature */
      .signature-table .sig-pasien {
          width: 65% !important;
      }
@@ -472,9 +559,68 @@
          width: 35% !important;
      }
 
-     /* Sesuaikan alignment process-table dengan signature-table */
+     /* Process table sejajar dengan signature */
      .process-table .empty-row td {
-         height: 50px !important; /* Sama dengan signature-table */
+         height: 48px !important;
+     }
+
+     .process-table td {
+         padding: 1px 1px !important;
+     }
+
+     /* ========================================
+        RESEP TABLE OPTIMISASI
+        ======================================== */
+
+     /* Kolom resep lebih fleksibel saat cetak */
+     .resep-table col.col-r {
+         width: 14% !important;
+     }
+
+     .resep-table col.col-aturan {
+         width: 12% !important;
+     }
+
+     .resep-table col.col-jml {
+         width: 18% !important;
+     }
+
+     /* Signatura padding lebih minimal */
+     .resep-table .row-signatura td {
+         padding: 0px 2px 4px 2px !important;
+     }
+
+     /* Indentasi signatura sesuaikan dengan kolom R/ */
+     .resep-table .row-signatura td:first-child {
+         padding-left: 45px !important;
+     }
+
+     /* ========================================
+        HEADER OPTIMISASI
+        ======================================== */
+
+     .header {
+         padding: 3px 5px !important;
+         min-height: 45px !important;
+     }
+
+     .logo {
+         width: 35px !important;
+         height: 42px !important;
+     }
+
+     .hospital-info .name {
+         font-size: 8.5pt !important;
+     }
+
+     .hospital-info .address {
+         font-size: 6pt !important;
+     }
+
+     /* Judul RESEP ASLI lebih kecil */
+     h4 {
+         font-size: 9pt !important;
+         padding: 6px !important;
      }
  }
 
