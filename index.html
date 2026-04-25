@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Resep Asli - RSUD H. ABDUL MANAP</title>
+    <style>
+        @page {
+            size: A5 landscape;
+            margin: 0.3cm;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 8pt;
+            margin: 0;
+            padding: 0;
+            color: #000;
+            line-height: 1.1;
+        }
+
+        .container {
+            width: 100%;
+            padding: 5px;
+        }
+
+        /* Header Rumah Sakit */
+        .header {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+        }
+
+        .logo {
+            width: 45px;
+            height: 55px;
+            margin-right: 10px;
+        }
+
+        .hospital-info b {
+            font-size: 10pt;
+            display: block;
+        }
+
+        .hospital-info span {
+            font-size: 7pt;
+        }
+
+        /* Layout Utama */
+        .main-layout {
+            display: flex;
+            gap: 15px;
+        }
+
+        .left-panel {
+            width: 52%;
+            border-right: 1px dashed #ccc;
+            padding-right: 10px;
+        }
+
+        .right-panel {
+            width: 48%;
+        }
+
+        /* Informasi Pasien */
+        .info-table td {
+            font-size: 8pt;
+            padding: 1px 0;
+            vertical-align: top;
+        }
+
+        .section-title {
+            text-align: center;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 5px;
+            font-size: 9pt;
+        }
+
+        /* Area Resep (R/) */
+        .prescription-area {
+            margin-top: 5px;
+            min-height: 140px;
+            border-top: 1px solid #000;
+            padding-top: 5px;
+        }
+
+        .r-item {
+            margin-bottom: 8px;
+        }
+
+        .r-item b {
+            font-size: 9pt;
+        }
+
+        /* Checklist & Tabel Verifikasi (Eks-Telaah) */
+        .checklist-container {
+            border: 1px solid #000;
+            padding: 4px;
+        }
+
+        .checklist-table {
+            width: 100%;
+            font-size: 7pt;
+            border-collapse: collapse;
+            margin-bottom: 4px;
+        }
+
+        .checklist-table th,
+        .checklist-table td {
+            border: 1px solid #000;
+            padding: 1px 3px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .footer-tables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+        }
+
+        .box-title {
+            background: #eee;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #000;
+            font-size: 6.5pt;
+        }
+
+        .sign-box {
+            border: 1px solid #000;
+            height: 35px;
+            font-size: 6.5pt;
+            padding: 2px;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Kop Surat -->
+        <div class="header">
+            <img src="/assets/images/logo/Kota Jambi.png" class="logo" alt="Logo">
+            <div class="hospital-info">
+                <b>RSUD H. ABDUL MANAP KOTA JAMBI</b>
+                <span>Jl. Sk. Rd. Syahbudin, Mayang Mangurai, Alam Barajo, Kota Jambi<br>
+                    Telp: (0741) 5910190 | Email: rsudjambikota@gmail.com</span>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <!-- SISI KIRI: DATA RESEP ASLI -->
+            <div class="left-panel">
+                <div class="section-title">RESEP ASLI</div>
+
+                <table class="info-table">
+                    <tr>
+                        <td width="30%">No. Resep</td>
+                        <td>: <b>R250426-1</b></td> <!-- Sinkronisasi Format Baru -->
+                    </tr>
+                    <tr>
+                        <td>Tgl / Jam</td>
+                        <td>: 25/04/2026 / 00:42:57</td>
+                    </tr>
+                    <tr>
+                        <td>Pasien</td>
+                        <td>: <b>SARIYANI</b> (P) / 00006547</td>
+                    </tr>
+                    <tr>
+                        <td>Dokter</td>
+                        <td>: dr. Freddy Hasudungan Aritonang, MSc., Sp. S</td>
+                    </tr>
+                    <tr>
+                        <td>Unit Asal</td>
+                        <td>: IGD / RAWAT INAP PENYAKIT DALAM</td>
+                    </tr>
+                    <tr>
+                        <td>Alergi</td>
+                        <td>: [ ] Tidak &nbsp; [ ] Ya: .........................</td>
+                    </tr>
+                </table>
+
+                <div class="prescription-area">
+                    <!-- Contoh Item Non-Racikan -->
+                    <div class="r-item">
+                        <b>R/ 1</b> OTSU Salin Infus 3 % Softbag <span style="float:right">Jml: 1</span><br>
+                        <i>S. i.v. simm (1/1)</i>
+                    </div>
+
+                    <!-- Contoh Item Racikan (Sudah Disesuaikan Jumlahnya) -->
+                    <div class="r-item">
+                        <b>R/ 2</b> Parasetamol 375mg, Diazepam 2mg, Codein 15mg <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; m.f. pulv dtd no. X <span style="float:right"><b>Jml: 10
+                                (Racikan)</b></span><br>
+                        <i>S. 3 dd pulv I</i>
+                    </div>
+
+                    <div class="r-item">
+                        <b>R/ 3</b> Ketorolac Inj 30 mg/ml <span style="float:right">Jml: 1</span><br>
+                        <i>S. pro inj (1/1)</i>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px; font-size: 7pt; border-top: 1px solid #000; padding-top: 5px;">
+                    <table width="100%">
+                        <tr class="text-center">
+                            <td>Hitung/Timbang</td>
+                            <td>Kemas</td>
+                            <td>Penyerahan</td>
+                        </tr>
+                        <tr style="height: 30px;">
+                            <td style="border: 0.5px solid #ccc;"></td>
+                            <td style="border: 0.5px solid #ccc;"></td>
+                            <td style="border: 0.5px solid #ccc;"></td>
+                        </tr>
+                    </table>
+                    <p style="font-style: italic; margin-top: 5px;">* Obat tidak boleh diganti tanpa sepengetahuan
+                        Dokter.</p>
+                </div>
+            </div>
+
+            <!-- SISI KANAN: TELAAH & VERIFIKASI (INTEGRASI) -->
+            <div class="right-panel">
+                <div class="checklist-container">
+                    <!-- Tabel Telaah Resep & Obat -->
+                    <table class="checklist-table">
+                        <tr>
+                            <th colspan="2">TELAAH RESEP & OBAT</th>
+                            <th width="15">Y</th>
+                            <th width="15">T</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Kejelasan tulisan & benar identitas pasien</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Benar nama obat & bentuk sediaan</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Benar dosis & rute pemberian</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Benar waktu & frekuensi (Aturan Minum)</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Tidak ada interaksi/duplikasi/kontraindikasi</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Kesesuaian dengan Formularium</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <!-- Persetujuan & Waktu Tunggu -->
+                    <div class="footer-tables">
+                        <div>
+                            <div class="box-title">Persetujuan Perubahan</div>
+                            <div class="sign-box" style="font-size: 6pt;">
+                                Tulis: ............................................<br>
+                                Jadi : ............................................
+                                <div style="display:flex; justify-content:space-between; margin-top:3px;">
+                                    <span>Apt. [___]</span><span>Dr. [___]</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="box-title">Waktu Tunggu</div>
+                            <div class="sign-box">
+                                Masuk: ...............................<br>
+                                Selesai: .............................
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edukasi Obat -->
+                    <table class="checklist-table" style="margin-top: 4px;">
+                        <tr>
+                            <th colspan="2">EDUKASI OBAT (KEPADA PASIEN)</th>
+                            <th width="15">V</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Nama Obat & Kegunaan (Manfaat)</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Aturan Pakai, Rute & Cara Penyimpanan</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Efek Samping & Riwayat Alergi</td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                    <!-- Paraf Akhir -->
+                    <table width="100%" style="margin-top: 5px; border-collapse: collapse;">
+                        <tr>
+                            <td width="50%" class="text-center"
+                                style="border: 1px solid #000; height: 35px; vertical-align: top;">
+                                Paraf & Nama Pasien/Keluarga<br><br>
+                            </td>
+                            <td width="50%" class="text-center" style="border: 1px solid #000; vertical-align: top;">
+                                Petugas Farmasi (Pcc)<br><br>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="text-center" style="font-size: 7pt; margin-top: 5px;">
+                    Cetak: 25/04/2026 15:39 | User: DEPO RANAP
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Kontrol -->
+        <div class="no-print"
+            style="margin-top: 15px; text-align: center; border-top: 1px solid #ccc; padding-top: 10px;">
+            <button onclick="window.print()"
+                style="padding: 10px 25px; cursor: pointer; background: #28a745; color: #fff; border: none; border-radius: 4px; font-weight: bold;">
+                CETAK RESEP ASLI
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
