@@ -1,7 +1,8 @@
  /* ── Page Setup ── */
  @page {
-     size: A5 landscape;
-     margin: 0.3cm;
+     /* Ukuran 1/4 F4 Landscape (165mm × 107.5mm) */
+     size: 165mm 107.5mm landscape;
+     margin: 0.2cm; /* Margin lebih kecil untuk ruang lebih luas */
  }
 
  * {
@@ -241,7 +242,7 @@
  .cell-proses {
      grid-column: 1;
      grid-row: 3;
-     padding: 4px 7px;
+     padding: 4px 5px; /* Samakan dengan cell-telaah-detail untuk alignment */
  }
 
  /* process table: label row + empty row */
@@ -264,7 +265,7 @@
  }
 
  .process-table .empty-row td {
-     height: 22px;
+     height: 50px; /* Diperbesar agar sejajar dengan signature-table */
  }
 
  .note-text {
@@ -379,15 +380,24 @@
      width: 100%;
      border-collapse: collapse;
      margin-top: 3px;
+     height: 68px;
  }
 
 .signature-table td {
      border: 0.5px solid #000;
-     height: 34px;
+     height: 50px; /* Diperbesar untuk ruang TTD yang cukup */
      vertical-align: top;
-     padding: 2px 3px;
+     padding: 4px 5px; /* Padding diperbesar untuk kenyamanan */
      font-size: 6.5pt;
      text-align: center;
+ }
+
+ .signature-table .sig-pasien {
+     width: 65%; /* Kolom pasien lebih longgar untuk TTD */
+ }
+
+ .signature-table .sig-farmasi {
+     width: 35%; /* Kolom farmasi disesuaikan */
  }
 
  .print-info {
@@ -433,12 +443,38 @@
          display: none;
      }
 
+     /* Strategi Pengecilan Dinamis dengan Transform Scale */
+     .page {
+         /* Memaksa kontainer berpura-pura memiliki lebar kertas yang lebih besar (A5) */
+         width: 210mm !important;
+         /* Lalu mengecilkannya 75% agar muat di kertas 1/4 F4 */
+         transform: scale(0.75);
+         transform-origin: top left;
+         border: none;
+     }
+
      body {
          font-size: 7pt;
      }
 
-     .page {
-         border: none;
+     /* Pertahankan tinggi signature-table untuk ruang TTD saat cetak */
+     .signature-table td {
+         height: 50px !important;
+         padding: 4px 5px !important;
+     }
+
+     /* Pertahankan rasio kolom signature saat cetak */
+     .signature-table .sig-pasien {
+         width: 65% !important;
+     }
+
+     .signature-table .sig-farmasi {
+         width: 35% !important;
+     }
+
+     /* Sesuaikan alignment process-table dengan signature-table */
+     .process-table .empty-row td {
+         height: 50px !important; /* Sama dengan signature-table */
      }
  }
 
