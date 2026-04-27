@@ -2,7 +2,7 @@
            HYBRID PRINT APPROACH
            ═══════════════════════════════════════════════════════════════
 
-   Pendekatan Kombinasi untuk Kertas 1/4 F4 (165mm × 107.5mm):
+   Pendekatan Kombinasi untuk Kertas 1/3 F4 (165mm × 107.5mm):
 
    1. FLUID STRUCTURE (Persentase):
       - Semua lebar kolom menggunakan % untuk fleksibilitas
@@ -26,7 +26,7 @@
 
  /* ── Page Setup ── */
  @page {
-     /* Ukuran 1/4 F4 Landscape (165mm × 107.5mm) */
+     /* Ukuran 1/3 F4 Landscape (165mm × 107.5mm) */
      size: 165mm 107.5mm landscape;
      margin: 0.2cm; /* Margin lebih kecil untuk ruang lebih luas */
  }

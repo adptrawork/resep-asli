@@ -2,13 +2,13 @@
 
 ## Ukuran Kertas
 
-| Jenis | Ukuran | Dimensi |
-|-------|--------|---------|
-| F4 (Folio) | Full | 215mm × 330mm |
-| 1/4 F4 | **Default** | 165mm × 107.5mm |
-| A5 Landscape | Alternative | 210mm × 148mm |
+| Jenis        | Ukuran      | Dimensi         |
+| ------------ | ----------- | --------------- |
+| F4 (Folio)   | Full        | 215mm × 330mm   |
+| 1/3 F4       | **Default** | 165mm × 107.5mm |
+| A5 Landscape | Alternative | 210mm × 148mm   |
 
-**Rekomendasi**: Gunakan 1/4 F4 untuk ukuran yang paling optimal.
+**Rekomendasi**: Gunakan 1/3 F4 untuk ukuran yang paling optimal.
 
 ## Hybrid Print Approach
 
@@ -42,15 +42,16 @@ Transform scale hanya digunakan untuk fine-tuning, bukan scaling penuh:
 
 ```css
 @media print {
-    .page {
-        width: 210mm !important;  /* Base A5 landscape */
-        transform: scale(0.88);  /* Fine-tuning minimal */
-        transform-origin: top left;
-    }
+  .page {
+    width: 210mm !important; /* Base A5 landscape */
+    transform: scale(0.88); /* Fine-tuning minimal */
+    transform-origin: top left;
+  }
 }
 ```
 
 **Kenapa 0.88?**
+
 - Struktur sudah fluid → scale minimal
 - Teks tetap tajam (scale < 0.90)
 - Layout proporsional terjaga
@@ -107,23 +108,24 @@ Jika hasil cetak tidak pas dengan printer berbeda:
 
 ```css
 @media print {
-    .page {
-        transform: scale(0.88); /* Ubah nilai ini */
-    }
+  .page {
+    transform: scale(0.88); /* Ubah nilai ini */
+  }
 }
 ```
 
-| Scale | Kondisi | Penggunaan |
-|-------|---------|------------|
-| 0.90 | Layout terlalu kecil | Printer dengan area cetak besar |
-| 0.88 | **Default** | Printer standar |
-| 0.85 | Layout terpotong | Printer dengan margin besar |
+| Scale | Kondisi              | Penggunaan                      |
+| ----- | -------------------- | ------------------------------- |
+| 0.90  | Layout terlalu kecil | Printer dengan area cetak besar |
+| 0.88  | **Default**          | Printer standar                 |
+| 0.85  | Layout terpotong     | Printer dengan margin besar     |
 
 ## Troubleshooting
 
 ### Masalah: Layout Terpotong
 
 **Solutions:**
+
 1. Kurangi nilai scale (0.88 → 0.85)
 2. Pastikan margins di None
 3. Cek ukuran kertas custom
@@ -131,23 +133,29 @@ Jika hasil cetak tidak pas dengan printer berbeda:
 ### Masalah: Tidak Muat Satu Halaman
 
 **Solutions:**
+
 1. Kurangi jumlah contoh resep
 2. Perkecil font size:
    ```css
    @media print {
-       body { font-size: 6.5pt !important; }
+     body {
+       font-size: 6.5pt !important;
+     }
    }
    ```
 3. Kurangi padding:
    ```css
    @media print {
-       .info-table td { padding: 0px 0.5px !important; }
+     .info-table td {
+       padding: 0px 0.5px !important;
+     }
    }
    ```
 
 ### Masalah: Border Tidak Terlihat
 
 **Solutions:**
+
 1. Enable "Print backgrounds"
 2. Disable "Print headers and footers"
 3. Cek `@media print` rules
@@ -155,6 +163,7 @@ Jika hasil cetak tidak pas dengan printer berbeda:
 ### Masalah: Teks Tajam Berkurang
 
 **Solutions:**
+
 1. Tingkatkan scale (0.85 → 0.88 → 0.90)
 2. Gunakan kertas kualitas tinggi
 3. Pastikan resolusi printer optimal
@@ -183,10 +192,10 @@ Jika hasil cetak tidak pas dengan printer berbeda:
 
 ## Referensi Ukuran
 
-| Unit | Nilai | Konversi |
-|------|-------|----------|
-| 1 inch | - | 25.4mm |
-| 1 mm | - | 0.039 inch |
-| 1 pt | - | 0.353mm (print) |
-| 165mm | 6.50 inch | 1/4 F4 width |
-| 107.5mm | 4.23 inch | 1/4 F4 height |
+| Unit    | Nilai     | Konversi        |
+| ------- | --------- | --------------- |
+| 1 inch  | -         | 25.4mm          |
+| 1 mm    | -         | 0.039 inch      |
+| 1 pt    | -         | 0.353mm (print) |
+| 165mm   | 6.50 inch | 1/3 F4 width    |
+| 107.5mm | 4.23 inch | 1/3 F4 height   |

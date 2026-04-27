@@ -1,6 +1,6 @@
 # Resep Asli - RSUD H. ABDUL MANAP KOTA JAMBI
 
-Formulir Resep Asli dengan Telaah Resep untuk keperluan pencetakan di kertas 1/4 F4 (165mm × 107.5mm landscape).
+Formulir Resep Asli dengan Telaah Resep untuk keperluan pencetakan di kertas 1/3 F4 (165mm × 107.5mm landscape).
 
 ## 📋 Fitur
 
@@ -20,7 +20,7 @@ Formulir Resep Asli dengan Telaah Resep untuk keperluan pencetakan di kertas 1/4
   - Tabel Proses: Hitung, Timbang, Kemas, Penyerahan
 - **Print Optimization**:
   - Hybrid approach: Fluid structure + Scale fine-tuning
-  - Kertas 1/4 F4 (165mm × 107.5mm landscape)
+  - Kertas 1/3 F4 (165mm × 107.5mm landscape)
   - Scale 0.88 untuk teks tajam maksimal
 
 ## 🚀 Penggunaan
@@ -29,7 +29,7 @@ Formulir Resep Asli dengan Telaah Resep untuk keperluan pencetakan di kertas 1/4
 
 1. Buka file `index.html` di browser modern (Chrome, Firefox, Edge, Safari)
 2. Klik tombol "CETAK RESEP ASLI" atau tekan `Ctrl+P` / `Cmd+P`
-3. Pastikan ukuran kertas terdeteksi sebagai 1/4 F4 atau atur manual:
+3. Pastikan ukuran kertas terdeteksi sebagai 1/3 F4 atau atur manual:
    - Width: 165mm (6.5 inches)
    - Height: 107.5mm (4.23 inches)
    - Orientation: Landscape
@@ -95,9 +95,9 @@ Jika perlu menyesuaikan scale untuk printer berbeda, ubah di `style.css`:
 
 ```css
 @media print {
-    .page {
-        transform: scale(0.88); /* Ubah nilai ini */
-    }
+  .page {
+    transform: scale(0.88); /* Ubah nilai ini */
+  }
 }
 ```
 
@@ -108,18 +108,20 @@ Jika perlu menyesuaikan scale untuk printer berbeda, ubah di `style.css`:
 ## 📝 Konvensi Penulisan Resep
 
 ### Format Tunggal
+
 ```
 R/ 1 | Omeprazole 20 mg Kaplet | | Jml: 10
-     |                          | | 
+     |                          | |
      | S. 2 dd cap I (ac)       | |
 ```
 
 ### Format Racikan
+
 ```
-R/ 1 | Amoxicillin 125 mg       | | 
-     | Parasetamol 100 mg       | | 
+R/ 1 | Amoxicillin 125 mg       | |
+     | Parasetamol 100 mg       | |
      | m.f. pulv. dtd. No. XV   | | Jml: 15 (Racikan)
-     |                          | | 
+     |                          | |
      | S. 3 dd pulv I           | |
 ```
 
